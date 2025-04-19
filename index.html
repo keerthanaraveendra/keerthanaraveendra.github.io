@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keerthana Raveendra</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #e75d8e;
+            --secondary: #333333;
+            --light: #f9f9f9;
+            --dark: #1a1a1a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--light);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 40px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icons a {
+            color: var(--dark);
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 120px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+        
+        .hero p {
+            font-size: 24px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+        
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            font-size: 48px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--primary);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 500px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .project-image {
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+        
+        .project-info {
+            padding: 20px;
+        }
+        
+        .project-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .project-description {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        /* Achievements Section */
+        .achievements-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .achievement-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .achievement-item:hover {
+            transform: translateX(10px);
+        }
+        
+        .achievement-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .achievement-description {
+            line-height: 1.6;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .skill-category {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .skill-category h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-align: center;
+        }
+        
+        .skills-list {
+            list-style: none;
+        }
+        
+        .skills-list li {
+            background-color: white;
+            margin-bottom: 10px;
+            padding: 12px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .skills-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        
+        /* Contact Section */
+        .contact-content {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .contact-info p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .contact-links {
+            list-style: none;
+        }
+        
+        .contact-links li {
+            margin-bottom: 15px;
+        }
+        
+        .contact-links a {
+            text-decoration: none;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.3s;
+        }
+        
+        .contact-links a:hover {
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links li {
+            margin: 0 15px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                width: 100%;
+                justify-content: space-around;
+            }
+            
+            .nav-links li {
+                margin: 0;
+            }
+            
+            .hero h1 {
+                font-size: 60px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-content {
+                flex-direction: column;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+        }
+        
+        /* Vertical Scroll for Images */
+        .vertical-scroll {
+            height: 500px;
+            overflow-y: auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            margin-bottom: 50px;
+        }
+        
+        .scroll-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .scroll-image {
+            height: 250px;
+            background-color: #ddd;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+        
+        /* Custom scrollbar */
+        .vertical-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .vertical-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .vertical-scroll::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+        
+        .vertical-scroll::-webkit-scrollbar-thumb:hover {
+            background: #d14a7a;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Keerthana Raveendra</a>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#nonprofits">Nonprofits</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/keerthanaraveendra/" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/minds_aligned10/" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>changemaker</h1>
+            <p>Social entrepreneur, student leader, and advocate for mental health and women's wellness</p>
+        </div>
+        <div class="scroll-indicator">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <p>Profile Image Will Be Added Later</p>
+                </div>
+                <div class="about-text">
+                    <h3>Hello, I'm Keerthana Raveendra</h3>
+                    <p>I'm a student leader and social entrepreneur passionate about creating positive change in mental health and women's wellness. With a strong academic background and diverse extracurricular experiences, I've founded and led multiple nonprofits that address critical social issues.</p>
+                    <p>From presenting at the United Nations to winning business competitions, I combine entrepreneurial thinking with social impact to create meaningful solutions. I'm particularly interested in mental health advocacy, women's health education, and innovative business development.</p>
+                    <p>Currently pursuing my A Levels in Mathematics, Economics, and Business, I balance academics with my commitment to community service and entrepreneurship.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nonprofits Section -->
+    <section id="nonprofits" style="background-color: #f9f9f9;">
+        <div class="container">
+            <h2 class="section-title">My Nonprofits</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <p>Minds Aligned Images Will Be Added Later</p>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Minds Aligned</h3>
+                        <p class="project-description">Founded in 2019, Minds Aligned is dedicated to breaking the stigma around mental health and fostering safe, supportive spaces for teens and adults. We've hosted mental wellness sessions with professionals in schools and communities, and presented our initiatives at the United Nations Headquarters in New York.</p>
+                        <a href="https://www.instagram.com/minds_aligned10/" target="_blank" style="color: var(--primary);">@minds_aligned10</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <p>Akshata Foundation Images Will Be Added Later</p>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Akshata Foundation</h3>
+                        <p class="project-description">Co-heading this student-led nonprofit focused on helping underprivileged women and children with safe sanitary practices and equipment. We've impacted 452+ girls through awareness programs and distributed 400+ hygiene kits via partnerships with government schools in Karnataka.</p>
+                        <a href="https://www.instagram.com/akshatafoundationofficial/" target="_blank" style="color: var(--primary);">@akshatafoundationofficial</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <p>Vital Hope Images Will Be Added Later</p>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Vital Hope</h3>
+                        <p class="project-description">Founded in 2024, Vital Hope provides support and assistance to underserved people. Our Project Karnataka conducted comprehensive research in rural villages to understand healthcare needs, while Project Women raised 30,000 INR to support a street vendor's daughter's education.</p>
+                        <a href="https://www.instagram.com/vitalhopeorg/" target="_blank" style="color: var(--primary);">@vitalhopeorg</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Vertical Scroll for Images -->
+            <h3 style="margin: 50px 0 20px; text-align: center; color: var(--primary);">Featured Images</h3>
+            <div class="vertical-scroll">
+                <div class="scroll-content">
+                    <div class="scroll-image">
+                        <p>Minds Aligned Event Photo Will Be Added Later</p>
+                    </div>
+                    <div class="scroll-image">
+                        <p>Akshata Foundation Workshop Photo Will Be Added Later</p>
+                    </div>
+                    <div class="scroll-image">
+                        <p>Vital Hope Project Karnataka Photo Will Be Added Later</p>
+                    </div>
+                    <div class="scroll-image">
+                        <p>UN Presentation Photo Will Be Added Later</p>
+                    </div>
+                    <div class="scroll-image">
+                        <p>Community Service Photo Will Be Added Later</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="achievements-container">
+                <div class="achievement-item">
+                    <h3 class="achievement-title">Academic Excellence</h3>
+                    <p class="achievement-description">
+                        <strong>A Levels (2026, ongoing):</strong> Mathematics, Economics, Business<br>
+                        <strong>AS Levels:</strong> Mathematics, Economics, Business, English Language, Global Perspectives<br>
+                        <strong>IGCSE (2022):</strong> 4 A* (including Business Studies – Highest in School), 3 A, 1 C
+                    </p>
+                </div>
+                
+                <div class="achievement-item">
+                    <h3 class="achievement-title">Standardized Testing & Certifications</h3>
+                    <p class="achievement-description">
+                        <strong>AP Exams:</strong><br>
+                        - AP Psychology: 4<br>
+                        - AP English Language & Composition: 3
+                    </p>
+                </div>
+                
+                <div class="achievement-item">
+                    <h3 class="achievement-title">Olympiads & Competitions</h3>
+                    <p class="achievement-description">
+                        - Global Economics Olympiad (Regional Level)<br>
+                        - PIMSO Math Olympiad (Bronze – Top 20%, Qualified for Global Finals)<br>
+                        - Immerse Education Essay Scholarship Winner (£1000 Scholarship)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Entrepreneurship Section -->
+    <section id="entrepreneurship" style="background-color: #f9f9f9;">
+        <div class="container">
+            <h2 class="section-title">Entrepreneurship & Innovation</h2>
+            <div class="achievements-container">
+                <div class="achievement-item">
+                    <h3 class="achievement-title">Global Research and Innovation Program</h3>
+                    <p class="achievement-description">
+                        Participated in a three-month program focused on design thinking and developing commercializable products. Collaborated with NUS Singapore to create a double visor prototype with customized eyepower and advanced coatings, addressing a persistent issue for two-wheeled riders who wear both glasses and helmets.
+                    </p>
+                </div>
+                
+                <div class="achievement-item">
+                    <h3 class="achievement-title">PennSEM Social Entrepreneurship Competition</h3>
+                    <p class="achievement-description">
+                        Named India's First Runner-Up at this prestigious global competition hosted by the University of Pennsylvania. Presented our double visor prototype, competing against 400+ participants from 30+ countries and 160+ institutions.
+                    </p>
+                </div>
+                
+                <div class="achievement-item">
+                    <h3 class="achievement-title">Junior MBA & Business Pitch Competitions</h3>
+                    <p class="achievement-description">
+                        Developed "Intellidecor," an AI-powered interior design bot, and reached the finals at the IIT Roorkee e-cell business pitch competition. Also created "Aura," a customizable perfume brand, reaching the semifinals at VIT Chennai's TechVilla Business Pitch competition.
+                    </p>
+                </div>
+                
+                <div class="achievement-item">
+                    <h3 class="achievement-title">Evren - Handmade Clay Accessories Business</h3>
+                    <p class="achievement-description">
+                        Serving as Marketing Head for this small business specializing in handmade clay accessories and home decor items. We sell products both in-person and online, participate in pop-up events, and have generated 11,000 INR in revenue to date.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Vertical Scroll for Images -->
+            <h3 style="margin: 50px 0 20px; text-align: center; color: var(--primary);">Featured Projects</h3>
+            <div class="vertical-scroll">
+                <div class="scroll-content">
+                    <div class="scroll-image">
+                        <p>Double Visor Prototype Photo Will Be Added Later</p>
+                    </div>
+                    <div class="scroll-image">
+                        <p>PennSEM Competition Photo Will Be Added Later</p>
+                    </div>
+                    <div class="scroll-image">
+                        <p>Intellidecor Presentation Photo Will Be Added Later</p>
+                    </div>
+                    <div class="scroll-image">
+                        <p>Evren Products Photo Will Be Added Later</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements">
+        <div class="container">
+            <h2 class="section-title">Other Achievements</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Media & Podcasting</h3>
+                    <ul class="skills-list">
+                        <li>Featured on The Changemakers Podcast by Girls Lead Forward</li>
+                        <li>Host for "Corporate Lingo Unveiled" podcast</li>
+                        <li>Participated in New York Times Podcast Tournament</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Performing Arts & Sports</h3>
+                    <ul class="skills-list">
+                        <li>Won 1st place in Fantasia '23 Music Fest/Theatre</li>
+                        <li>Multiple medals in Inter-House Athletics</li>
+                        <li>School Football Team (Striker) - Runners-up in Chairmen's Cup</li>
+                        <li>School Basketball Team Member</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Leadership</h3>
+                    <ul class="skills-list">
+                        <li>Bob's Cafe School Event - Best Designed Cafe Award</li>
+                        <li>Civic Impact Fellowship 2024</li>
+                        <li>Marketing Intern at Pruthvi Children's and Skin Clinic</li>
+                        <li>Wolves of Wall Street investing competition - Ranked 21/5018 (Top 0.42%)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background-color: #f9f9f9;">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p>I'm always open to new opportunities, collaborations, and discussions about social entrepreneurship, mental health advocacy, and women's wellness initiatives.</p>
+                    <ul class="contact-links">
+                        <li>
+                            <a href="mailto:keerthanaraveendra@gmail.com">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                                keerthanaraveendra@gmail.com
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/keerthanaraveendra/" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h
