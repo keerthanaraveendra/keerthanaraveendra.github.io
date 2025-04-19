@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keerthana Raveendra</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
         
         :root {
             --primary: #e75d8e;
@@ -105,6 +105,16 @@
             color: white;
         }
         
+        .hero-texture {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='rgba(255,255,255,.075)' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.6;
+        }
+        
         .hero-content {
             text-align: center;
             z-index: 2;
@@ -112,9 +122,12 @@
         
         .hero h1 {
             font-size: 120px;
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 20px;
             line-height: 1;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            text-shadow: 3px 3px 0px rgba(0,0,0,0.1);
         }
         
         .hero p {
@@ -191,18 +204,13 @@
         }
         
         /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-        
         .project-card {
             background-color: white;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 50px;
         }
         
         .project-card:hover {
@@ -210,29 +218,101 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         }
         
-        .project-image {
-            height: 200px;
+        .project-slider {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+        
+        .slide-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-slide {
+            min-width: 100%;
+            height: 400px;
             background-color: #ddd;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #999;
+            flex-shrink: 0;
+        }
+        
+        .slider-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .slider-dot.active {
+            background-color: white;
+        }
+        
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+        
+        .slider-btn-prev {
+            left: 20px;
+        }
+        
+        .slider-btn-next {
+            right: 20px;
         }
         
         .project-info {
-            padding: 20px;
+            padding: 30px;
         }
         
         .project-title {
-            font-size: 20px;
+            font-size: 24px;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             color: var(--primary);
         }
         
         .project-description {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             line-height: 1.6;
+        }
+        
+        .project-link {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .project-link:hover {
+            text-decoration: underline;
         }
         
         /* Achievements Section */
@@ -243,15 +323,30 @@
         }
         
         .achievement-item {
+            display: flex;
             background-color: white;
             border-radius: 10px;
-            padding: 30px;
+            overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s;
         }
         
         .achievement-item:hover {
-            transform: translateX(10px);
+            transform: translateY(-10px);
+        }
+        
+        .achievement-image {
+            width: 300px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+        
+        .achievement-content {
+            padding: 30px;
+            flex: 1;
         }
         
         .achievement-title {
@@ -263,44 +358,7 @@
         
         .achievement-description {
             line-height: 1.6;
-        }
-        
-        /* Skills Section */
-        .skills-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        
-        .skill-category {
-            flex: 1;
-            min-width: 250px;
-        }
-        
-        .skill-category h3 {
-            font-size: 20px;
-            margin-bottom: 20px;
-            color: var(--primary);
-            text-align: center;
-        }
-        
-        .skills-list {
-            list-style: none;
-        }
-        
-        .skills-list li {
-            background-color: white;
-            margin-bottom: 10px;
-            padding: 12px 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .skills-list li:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            margin-bottom: 15px;
         }
         
         /* Contact Section */
@@ -342,6 +400,32 @@
         }
         
         .contact-links a:hover {
+            color: var(--primary);
+        }
+        
+        .featured-item {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .featured-item h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+        
+        .featured-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--secondary);
+            gap: 10px;
+            transition: color 0.3s;
+        }
+        
+        .featured-link:hover {
             color: var(--primary);
         }
         
@@ -414,51 +498,15 @@
             .section-title {
                 font-size: 36px;
             }
-        }
-        
-        /* Vertical Scroll for Images */
-        .vertical-scroll {
-            height: 500px;
-            overflow-y: auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-            border-radius: 10px;
-            margin-bottom: 50px;
-        }
-        
-        .scroll-content {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        
-        .scroll-image {
-            height: 250px;
-            background-color: #ddd;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-        }
-        
-        /* Custom scrollbar */
-        .vertical-scroll::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        .vertical-scroll::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-        
-        .vertical-scroll::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 10px;
-        }
-        
-        .vertical-scroll::-webkit-scrollbar-thumb:hover {
-            background: #d14a7a;
+            
+            .achievement-item {
+                flex-direction: column;
+            }
+            
+            .achievement-image {
+                width: 100%;
+                height: 200px;
+            }
         }
     </style>
 </head>
@@ -471,7 +519,7 @@
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
                     <li><a href="#nonprofits">Nonprofits</a></li>
-                    <li><a href="#education">Education</a></li>
+                    <li><a href="#entrepreneurship">Entrepreneurship</a></li>
                     <li><a href="#achievements">Achievements</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -493,6 +541,7 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-texture"></div>
         <div class="hero-content">
             <h1>changemaker</h1>
             <p>Social entrepreneur, student leader, and advocate for mental health and women's wellness</p>
@@ -514,9 +563,9 @@
                 </div>
                 <div class="about-text">
                     <h3>Hello, I'm Keerthana Raveendra</h3>
-                    <p>I'm a student leader and social entrepreneur passionate about creating positive change in mental health and women's wellness. With a strong academic background and diverse extracurricular experiences, I've founded and led multiple nonprofits that address critical social issues.</p>
-                    <p>From presenting at the United Nations to winning business competitions, I combine entrepreneurial thinking with social impact to create meaningful solutions. I'm particularly interested in mental health advocacy, women's health education, and innovative business development.</p>
-                    <p>Currently pursuing my A Levels in Mathematics, Economics, and Business, I balance academics with my commitment to community service and entrepreneurship.</p>
+                    <p>I'm a student leader and social entrepreneur dedicated to driving positive change in mental health and women's wellness. With a strong academic foundation in A Levels Mathematics, Economics, and Business, I balance rigorous academics with a deep commitment to community impact.</p>
+                    <p>As the founder of multiple nonprofits addressing critical social issues, I've led initiatives that promote mental health awareness and women's health education. My work has taken me from grassroots efforts to global platforms, including presenting at the United Nations.</p>
+                    <p>By combining entrepreneurial thinking with a passion for social impact, I strive to develop innovative, sustainable solutions that empower communities and create lasting change.</p>
                 </div>
             </div>
         </div>
@@ -526,194 +575,237 @@
     <section id="nonprofits" style="background-color: #f9f9f9;">
         <div class="container">
             <h2 class="section-title">My Nonprofits</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <p>Minds Aligned Images Will Be Added Later</p>
+            
+            <!-- Minds Aligned -->
+            <div class="project-card">
+                <div class="project-slider" id="minds-aligned-slider">
+                    <button class="slider-btn slider-btn-prev">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M15 18l-6-6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="slide-container">
+                        <div class="project-slide">
+                            <p>Minds Aligned Photo 1 Will Be Added Later</p>
+                        </div>
+                        <div class="project-slide">
+                            <p>Minds Aligned Photo 2 Will Be Added Later</p>
+                        </div>
+                        <div class="project-slide">
+                            <p>Minds Aligned Photo 3 Will Be Added Later</p>
+                        </div>
+                        <div class="project-slide">
+                            <p>Minds Aligned Photo 4 Will Be Added Later</p>
+                        </div>
+                        <div class="project-slide">
+                            <p>Minds Aligned Photo 5 Will Be Added Later</p>
+                        </div>
                     </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Minds Aligned</h3>
-                        <p class="project-description">Founded in 2019, Minds Aligned is dedicated to breaking the stigma around mental health and fostering safe, supportive spaces for teens and adults. We've hosted mental wellness sessions with professionals in schools and communities, and presented our initiatives at the United Nations Headquarters in New York.</p>
-                        <a href="https://www.instagram.com/minds_aligned10/" target="_blank" style="color: var(--primary);">@minds_aligned10</a>
-                    </div>
+                    <button class="slider-btn slider-btn-next">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </button>
+                    <div class="slider-nav"></div>
                 </div>
-                
-                <div class="project-card">
-                    <div class="project-image">
-                        <p>Akshata Foundation Images Will Be Added Later</p>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Akshata Foundation</h3>
-                        <p class="project-description">Co-heading this student-led nonprofit focused on helping underprivileged women and children with safe sanitary practices and equipment. We've impacted 452+ girls through awareness programs and distributed 400+ hygiene kits via partnerships with government schools in Karnataka.</p>
-                        <a href="https://www.instagram.com/akshatafoundationofficial/" target="_blank" style="color: var(--primary);">@akshatafoundationofficial</a>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image">
-                        <p>Vital Hope Images Will Be Added Later</p>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Vital Hope</h3>
-                        <p class="project-description">Founded in 2024, Vital Hope provides support and assistance to underserved people. Our Project Karnataka conducted comprehensive research in rural villages to understand healthcare needs, while Project Women raised 30,000 INR to support a street vendor's daughter's education.</p>
-                        <a href="https://www.instagram.com/vitalhopeorg/" target="_blank" style="color: var(--primary);">@vitalhopeorg</a>
-                    </div>
+                <div class="project-info">
+                    <h3 class="project-title">Minds Aligned</h3>
+                    <p class="project-description">Founded in 2019, Minds Aligned is a youth-led non-profit organization dedicated to breaking the stigma around mental health and fostering a safe, supportive space for teens and adults to thrive. Our mission is to empower individuals through holistic well-being, human connection, and nature-based healing.</p>
+                    <p class="project-description">We've hosted mental wellness sessions with professionals in government schools, local communities, and corporate businesses, connecting with individuals across Bangalore and Ahmedabad. Our street awareness campaigns bring psychiatrist-approved knowledge about conditions like OCD, depression, and anxiety directly to the community through engaging conversations in high-traffic areas like Church Street.</p>
+                    <p class="project-description">One of our innovative initiatives includes puppy yoga sessions, which in our most recent event raised around 13,000 INR while also helping foster puppies get adopted. Minds Aligned had the honor of presenting our mental health initiatives at the prestigious 1M1B Youth Summit at United Nations Headquarters in New York, amplifying our mission on a global platform.</p>
+                    <a href="https://www.instagram.com/minds_aligned10/" target="_blank" class="project-link">@minds_aligned10</a>
                 </div>
             </div>
             
-            <!-- Vertical Scroll for Images -->
-            <h3 style="margin: 50px 0 20px; text-align: center; color: var(--primary);">Featured Images</h3>
-            <div class="vertical-scroll">
-                <div class="scroll-content">
-                    <div class="scroll-image">
-                        <p>Minds Aligned Event Photo Will Be Added Later</p>
+            <!-- Akshata Foundation -->
+            <div class="project-card">
+                <div class="project-slider" id="akshata-slider">
+                    <button class="slider-btn slider-btn-prev">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M15 18l-6-6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="slide-container">
+                        <div class="project-slide">
+                            <p>Akshata Foundation Photo 1 Will Be Added Later</p>
+                        </div>
+                        <div class="project-slide">
+                            <p>Akshata Foundation Photo 2 Will Be Added Later</p>
+                        </div>
+                        <div class="project-slide">
+                            <p>Akshata Foundation Photo 3 Will Be Added Later</p>
+                        </div>
+                        <div class="project-slide">
+                            <p>Akshata Foundation Photo 4 Will Be Added Later</p>
+                        </div>
+                        <div class="project-slide">
+                            <p>Akshata Foundation Photo 5 Will Be Added Later</p>
+                        </div>
                     </div>
-                    <div class="scroll-image">
-                        <p>Akshata Foundation Workshop Photo Will Be Added Later</p>
-                    </div>
-                    <div class="scroll-image">
-                        <p>Vital Hope Project Karnataka Photo Will Be Added Later</p>
-                    </div>
-                    <div class="scroll-image">
-                        <p>UN Presentation Photo Will Be Added Later</p>
-                    </div>
-                    <div class="scroll-image">
-                        <p>Community Service Photo Will Be Added Later</p>
-                    </div>
+                    <button class="slider-btn slider-btn-next">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </button>
+                    <div class="slider-nav"></div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Akshata Foundation</h3>
+                    <p class="project-description">As Co-head of Akshata Foundation, a student-led non-profit organization founded in 2023, I've helped drive our mission to help underprivileged women and children around India by introducing safe sanitary practices and equipment. Our motto, "Nurturing Lifelong Wellness," reflects our belief that everyone has the right to access accurate information about menstruation, cervical cancer, and other common conditions affecting women.</p>
+                    <p class="project-description">Our key activities include providing access to safe sanitary practices and essential hygiene equipment, delivering accurate, life-saving information about menstruation and cervical cancer, and empowering rural communities through health education programs. To date, we have impacted 452 girls through awareness programs and distributed 400+ hygiene kits via partnerships with 4 government schools in Karnataka.</p>
+                    <p class="project-description">We've raised INR 40,000+ through fundraising efforts, including bake sales and online platforms. Recently, we were awarded the Netaji Smriti Puraskar 2025 for our contributions to women's health, a recognition that validates our continued efforts to create meaningful change in women's wellness education.</p>
+                    <a href="https://www.instagram.com/akshatafoundationofficial/" target="_blank" class="project-link">@akshatafoundationofficial</a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="achievements-container">
-                <div class="achievement-item">
-                    <h3 class="achievement-title">Academic Excellence</h3>
-                    <p class="achievement-description">
-                        <strong>A Levels (2026, ongoing):</strong> Mathematics, Economics, Business<br>
-                        <strong>AS Levels:</strong> Mathematics, Economics, Business, English Language, Global Perspectives<br>
-                        <strong>IGCSE (2022):</strong> 4 A* (including Business Studies – Highest in School), 3 A, 1 C
-                    </p>
+            
+            <!-- Vital Hope (continuing from previous section) -->
+                    </button>
+                    <div class="slide-container">
+                        <div class="project-slide">
+                            <p>Vital Hope Photo 1 Will Be Added Later</p>
+                        </div>
+                        <div class="project-slide">
+                            <p>Vital Hope Photo 2 Will Be Added Later</p>
+                        </div>
+                        <div class="project-slide">
+                            <p>Vital Hope Photo 3 Will Be Added Later</p>
+                        </div>
+                        <div class="project-slide">
+                            <p>Vital Hope Photo 4 Will Be Added Later</p>
+                        </div>
+                        <div class="project-slide">
+                            <p>Vital Hope Photo 5 Will Be Added Later</p>
+                        </div>
+                    </div>
+                    <button class="slider-btn slider-btn-next">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </button>
+                    <div class="slider-nav"></div>
                 </div>
-                
-                <div class="achievement-item">
-                    <h3 class="achievement-title">Standardized Testing & Certifications</h3>
-                    <p class="achievement-description">
-                        <strong>AP Exams:</strong><br>
-                        - AP Psychology: 4<br>
-                        - AP English Language & Composition: 3
-                    </p>
-                </div>
-                
-                <div class="achievement-item">
-                    <h3 class="achievement-title">Olympiads & Competitions</h3>
-                    <p class="achievement-description">
-                        - Global Economics Olympiad (Regional Level)<br>
-                        - PIMSO Math Olympiad (Bronze – Top 20%, Qualified for Global Finals)<br>
-                        - Immerse Education Essay Scholarship Winner (£1000 Scholarship)
-                    </p>
+                <div class="project-info">
+                    <h3 class="project-title">Vital Hope</h3>
+                    <p class="project-description">Founded in the summer of 2024, Vital Hope is a student-led non-profit organization that provides support and assistance to underserved people. As the founder, I've led our initiatives to create tangible impact in vulnerable communities.</p>
+                    <p class="project-description">Through Project Karnataka, we conducted comprehensive research in Harresamurdha and three neighboring villages, engaging with 44 families to understand their medical conditions and healthcare needs. Our survey revealed a pressing need for a nearby hospital, as access to healthcare remains a significant challenge for the residents. Alarmingly, only one out of the 44 families we spoke to has medical insurance, highlighting the critical gap in healthcare coverage in the area. We are currently planning to organize a medical health camp to address these immediate needs.</p>
+                    <p class="project-description">Our Project Women initiative successfully raised 30,000 INR to support a street vendor's daughter's education, creating pathways to opportunity for those who might otherwise be overlooked. Through these targeted efforts, Vital Hope continues to identify and address critical needs in our communities.</p>
+                    <a href="https://www.instagram.com/vitalhopeorg/" target="_blank" class="project-link">@vitalhopeorg</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Entrepreneurship Section -->
-    <section id="entrepreneurship" style="background-color: #f9f9f9;">
+    <section id="entrepreneurship">
         <div class="container">
             <h2 class="section-title">Entrepreneurship & Innovation</h2>
-            <div class="achievements-container">
-                <div class="achievement-item">
+            
+            <!-- Global Research and Innovation Program -->
+            <div class="achievement-item">
+                <div class="achievement-image">
+                    <p>NUS Singapore Program Photo Will Be Added Later</p>
+                </div>
+                <div class="achievement-content">
                     <h3 class="achievement-title">Global Research and Innovation Program</h3>
-                    <p class="achievement-description">
-                        Participated in a three-month program focused on design thinking and developing commercializable products. Collaborated with NUS Singapore to create a double visor prototype with customized eyepower and advanced coatings, addressing a persistent issue for two-wheeled riders who wear both glasses and helmets.
-                    </p>
-                </div>
-                
-                <div class="achievement-item">
-                    <h3 class="achievement-title">PennSEM Social Entrepreneurship Competition</h3>
-                    <p class="achievement-description">
-                        Named India's First Runner-Up at this prestigious global competition hosted by the University of Pennsylvania. Presented our double visor prototype, competing against 400+ participants from 30+ countries and 160+ institutions.
-                    </p>
-                </div>
-                
-                <div class="achievement-item">
-                    <h3 class="achievement-title">Junior MBA & Business Pitch Competitions</h3>
-                    <p class="achievement-description">
-                        Developed "Intellidecor," an AI-powered interior design bot, and reached the finals at the IIT Roorkee e-cell business pitch competition. Also created "Aura," a customizable perfume brand, reaching the semifinals at VIT Chennai's TechVilla Business Pitch competition.
-                    </p>
-                </div>
-                
-                <div class="achievement-item">
-                    <h3 class="achievement-title">Evren - Handmade Clay Accessories Business</h3>
-                    <p class="achievement-description">
-                        Serving as Marketing Head for this small business specializing in handmade clay accessories and home decor items. We sell products both in-person and online, participate in pop-up events, and have generated 11,000 INR in revenue to date.
-                    </p>
+                    <p class="achievement-description">This rigorous three-month program immersed us in design thinking and the development of a commercializable product. We began with seven weeks of intensive online classes, followed by a 10-day visit to NUS Singapore, where we networked with industry experts and collaborated closely with NUS professor, Dr. Tan to finalize our product.</p>
+                    <p class="achievement-description">My team focused on a persistent issue for two-wheeled riders who wear both glasses and helmets. We developed a prototype for a double visor featuring customized eyepower and advanced coatings that offer anti-scratch, anti-fog, and glare-reduction properties. This innovative design alleviates pressure from glass temples and significantly reduces fogging, which in turn lowers the risk of accidents.</p>
+                    <p class="achievement-description">Our product directly supports SDG 3—Good Health and Well-Being, and we are moving forward with patenting our design. In my letter of evaluation, judged by Professor Dr. TAN Wee Kek of NUS, I received 4A*'s and 1 A in commercialisation, reflecting the quality and potential of our innovation.</p>
                 </div>
             </div>
             
-            <!-- Vertical Scroll for Images -->
-            <h3 style="margin: 50px 0 20px; text-align: center; color: var(--primary);">Featured Projects</h3>
-            <div class="vertical-scroll">
-                <div class="scroll-content">
-                    <div class="scroll-image">
-                        <p>Double Visor Prototype Photo Will Be Added Later</p>
-                    </div>
-                    <div class="scroll-image">
-                        <p>PennSEM Competition Photo Will Be Added Later</p>
-                    </div>
-                    <div class="scroll-image">
-                        <p>Intellidecor Presentation Photo Will Be Added Later</p>
-                    </div>
-                    <div class="scroll-image">
-                        <p>Evren Products Photo Will Be Added Later</p>
-                    </div>
+            <!-- PennSEM -->
+            <div class="achievement-item">
+                <div class="achievement-image">
+                    <p>PennSEM Competition Photo Will Be Added Later</p>
+                </div>
+                <div class="achievement-content">
+                    <h3 class="achievement-title">PennSEM Social Entrepreneurship Competition</h3>
+                    <p class="achievement-description">I was named India's First Runner-Up at the PennSEM Social Entrepreneurship Competition, hosted by the University of Pennsylvania. This prestigious global event brought together 400+ participants from 30+ countries and 160+ institutions, challenging innovators to develop impactful solutions for real-world problems.</p>
+                    <p class="achievement-description">My team and I submitted our prototype for a double visor featuring customizable eyepower and advanced coatings, which we developed during our time at the National University of Singapore (NUS). The competition provided a valuable platform to showcase our innovation to a global audience of social entrepreneurship leaders.</p>
+                    <p class="achievement-description">PennSEM is a leading force in social entrepreneurship, known for fostering future changemakers through its high-profile pitch and case competitions. Placing among the top participants in this competitive field reflects my ability to design scalable, socially driven solutions and effectively present them to a global audience, skills that are directly relevant to my interest in economics and social impact.</p>
+                </div>
+            </div>
+            
+            <!-- Junior MBA -->
+            <div class="achievement-item">
+                <div class="achievement-image">
+                    <p>Intellidecor Pitch Presentation Photo Will Be Added Later</p>
+                </div>
+                <div class="achievement-content">
+                    <h3 class="achievement-title">Junior MBA & Business Pitch Competitions</h3>
+                    <p class="achievement-description">Through the Junior MBA program, I gained valuable insights into different types of businesses and their operations. My team of four developed "Intellidecor," an AI-powered interior design bot that simplifies the entire interior design process. Users can upload photos of their dream home, and the AI bot visualizes how the space could look, including furniture and decor, while connecting users with trusted contractors and service providers.</p>
+                    <p class="achievement-description">This innovative concept led us to participate in the IIT Roorkee e-cell business pitch competition in June 2023, where we reached the finals, competing against high school, college, and MBA students. The experience of developing a business model, conducting market research, and pitching to judges provided practical application of economic principles including market analysis, value proposition development, and financial projections.</p>
+                    <p class="achievement-description">In another competition, VIT Chennai's TechVilla Business Pitch, my team developed "Aura," a unique and customizable perfume brand that adapts to individual body chemistry for a bespoke scent experience. Our concept reached the semifinals with an acceptance rate of just 15%, placing us among the top 48 teams out of 300 participants. These entrepreneurial experiences have reinforced my understanding of product development, market positioning, and consumer behavior—all foundational concepts in economics.</p>
+                </div>
+            </div>
+            
+            <!-- Evren -->
+            <div class="achievement-item">
+                <div class="achievement-image">
+                    <p>Evren Products Photo Will Be Added Later</p>
+                </div>
+                <div class="achievement-content">
+                    <h3 class="achievement-title">Evren - Handmade Clay Accessories Business</h3>
+                    <p class="achievement-description">As Marketing Head for Evren, a small business founded by my friend, I've gained hands-on experience in business operations and marketing strategy. Our startup specializes in creating and selling handmade, handcrafted clay accessories and home decor items, offering products both in-person at our school and through online platforms.</p>
+                    <p class="achievement-description">We actively participate in pop-up events, setting up our own stall to showcase and sell our unique creations. My responsibilities include developing marketing strategies, managing social media content, coordinating pop-up event logistics, and analyzing sales data to identify trends and opportunities for growth.</p>
+                    <p class="achievement-description">Our focus on quality craftsmanship and attention to detail has helped us build a loyal customer base and steadily grow our brand. To date, we've generated 11,000 INR in revenue, providing me with practical experience in pricing strategy, inventory management, and sales forecasting—key components of microeconomics that I've been able to apply in a real-world business context.</p>
+                    <a href="https://www.instagram.com/evrenique/" target="_blank" class="project-link">@evrenique</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Achievements Section -->
-    <section id="achievements">
+    <!-- Other Achievements Section -->
+    <section id="achievements" style="background-color: #f9f9f9;">
         <div class="container">
             <h2 class="section-title">Other Achievements</h2>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h3>Media & Podcasting</h3>
-                    <ul class="skills-list">
-                        <li>Featured on The Changemakers Podcast by Girls Lead Forward</li>
-                        <li>Host for "Corporate Lingo Unveiled" podcast</li>
-                        <li>Participated in New York Times Podcast Tournament</li>
-                    </ul>
+            
+            <!-- Media & Podcasting -->
+            <div class="achievement-item">
+                <div class="achievement-image">
+                    <p>Podcast Recording Photo Will Be Added Later</p>
                 </div>
-                
-                <div class="skill-category">
-                    <h3>Performing Arts & Sports</h3>
-                    <ul class="skills-list">
-                        <li>Won 1st place in Fantasia '23 Music Fest/Theatre</li>
-                        <li>Multiple medals in Inter-House Athletics</li>
-                        <li>School Football Team (Striker) - Runners-up in Chairmen's Cup</li>
-                        <li>School Basketball Team Member</li>
-                    </ul>
+                <div class="achievement-content">
+                    <h3 class="achievement-title">Media & Podcasting</h3>
+                    <p class="achievement-description">I was featured on The Changemakers Podcast by Girls Lead Forward, where I shared my journey as a Gen Z changemaker—from founding Vital Hope to launching The Akshata Foundation, advocating for menstrual health education, cervical cancer awareness, and tackling the stigma surrounding women's hygiene in India.</p>
+                    <p class="achievement-description">As a member of the podcast hosts team for "Corporate Lingo Unveiled," an initiative under the Teen Times Organization, I help produce regular podcasts covering various business concepts. Our goal is to present these concepts in an engaging and accessible manner, making complex business topics understandable and relatable to everyone.</p>
+                    <p class="achievement-description">In the New York Times Podcast Tournament, my friend Amey and I created a podcast focused on bridal selling in India, a deeply disturbing practice in northern regions where women are bought and sold between families. Through extensive research, we shed light on how young girls, sometimes as young as seven, are exploited and traumatized through this practice, raising awareness about this critical social issue.</p>
+                    <p><a href="https://open.spotify.com/episode/2AO7cMCLhBaI6HWhcfJdsH?si=6e79811f749f4217" target="_blank" class="project-link">Listen to The Changemakers Podcast</a></p>
+                    <p><a href="https://open.spotify.com/show/7pxi0fnzOHRLPbrkkhU1Fa?si=cb4f7042bd4c473b" target="_blank" class="project-link">Listen to Corporate Lingo Unveiled</a></p>
+                    <p><a href="https://on.soundcloud.com/VN9tXoUV7c7kTRTcA" target="_blank" class="project-link">Listen to our NYT Podcast Tournament Submission</a></p>
                 </div>
-                
-                <div class="skill-category">
-                    <h3>Leadership</h3>
-                    <ul class="skills-list">
-                        <li>Bob's Cafe School Event - Best Designed Cafe Award</li>
-                        <li>Civic Impact Fellowship 2024</li>
-                        <li>Marketing Intern at Pruthvi Children's and Skin Clinic</li>
-                        <li>Wolves of Wall Street investing competition - Ranked 21/5018 (Top 0.42%)</li>
-                    </ul>
+            </div>
+            
+            <!-- Finance & Leadership -->
+            <div class="achievement-item">
+                <div class="achievement-image">
+                    <p>Wolves of Wall Street Competition Photo Will Be Added Later</p>
+                </div>
+                <div class="achievement-content">
+                    <h3 class="achievement-title">Finance & Leadership</h3>
+                    <p class="achievement-description">In the Wolves of Wall Street investing competition, I ranked 21 out of 5,018 participants (top 0.42%) with 22 strategic trades. This achievement demonstrates my analytical skills and understanding of financial markets, concepts that directly align with my interest in economics.</p>
+                    <p class="achievement-description">As part of the Civic Impact Fellowship 2024, I collaborated with the office of MLA Birendra Singh Rana and a group of about 20 students to develop a cooperative model for potato farmers. Over a month, we conducted in-depth research, analyzed existing solutions, and created a sustainable approach that could benefit farmers facing market challenges. This experience provided valuable insights into agricultural economics and policy development.</p>
+                    <p class="achievement-description">During the Bob's Cafe school event at the National Academy for Learning (NAFL), I helped establish a fully functioning cafe for a day. As part of a team of eleventh and tenth graders, we planned the menu, sourced ingredients, prepared food at home, and developed strategic pricing and marketing strategies. Our SpongeBob SquarePants-themed cafe was awarded "best-designed cafe" and attracted approximately 400 customers, providing practical experience in small business operations and consumer behavior analysis.</p>
+                </div>
+            </div>
+            
+            <!-- Sports & Performing Arts -->
+            <div class="achievement-item">
+                <div class="achievement-image">
+                    <p>Sports & Theatre Performance Photo Will Be Added Later</p>
+                </div>
+                <div class="achievement-content">
+                    <h3 class="achievement-title">Sports & Performing Arts</h3>
+                    <p class="achievement-description">In Fantasia '23 Music Fest/Theatre, I won 1st place (Gold) in an inter-house competition for our twisted adaptation of Beauty and the Beast. Playing Mrs. Potts as a lead singer, I contributed to our team's success despite having only two weeks of rehearsal time.</p>
+                    <p class="achievement-description">As a member of the school football team (striker) in Grades 9-10, I helped achieve runners-up status in the Chairman's Cup. I was also part of the school basketball team in Grade 10, balancing athletics with academics and developing teamwork and leadership skills through sports.</p>
+                    <p class="achievement-description">In Inter-House Athletics competitions (Grades 9–10), I won 2 Gold, 1 Silver, and 2 Bronze medals in various events, competing against students from my grade level while representing my house in school competitions.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section (continued) -->
-    <section id="contact" style="background-color: #f9f9f9;">
+    <!-- Contact Section -->
+    <section id="contact">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
             <div class="contact-content">
@@ -738,83 +830,53 @@
                                 LinkedIn Profile
                             </a>
                         </li>
-                        <li>
-                            <a href="https://www.instagram.com/minds_aligned10/" target="_blank">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                                </svg>
-                                Minds Aligned Instagram
-                            </a>
-                        </li>
                     </ul>
+                    
+                    <h3 style="margin-top: 30px;">Resume</h3>
+                    <div class="featured-item">
+                        <a href="https://docs.google.com/document/d/1ibGB-yvP4uTbSfOtNfpBuFGV2d5BeDM1T3yf8l0cO4Q/edit?tab=t.0" target="_blank" class="featured-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#4285F4">
+                                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+                            </svg>
+                            <span>View Full Resume</span>
+                        </a>
+                    </div>
                 </div>
                 
-                <!-- Featured Items Section -->
+                <!-- Featured Media Section -->
                 <div class="contact-info">
                     <h3>Featured Media</h3>
-                    <div style="margin-bottom: 20px;">
-                        <p style="margin-bottom: 10px;"><strong>The Changemakers Podcast by Girls Lead Forward</strong></p>
-                        <div style="background-color: #eee; padding: 15px; border-radius: 10px;">
-                            <a href="https://open.spotify.com/episode/2AO7cMCLhBaI6HWhcfJdsH?si=6e79811f749f4217" target="_blank" style="display: flex; align-items: center; text-decoration: none; color: var(--secondary);">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#1DB954">
-                                    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.48.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
-                                </svg>
-                                <span style="margin-left: 10px;">Listen on Spotify</span>
-                            </a>
-                        </div>
+                    <div class="featured-item">
+                        <h4>The Changemakers Podcast by Girls Lead Forward</h4>
+                        <p style="margin-bottom: 15px;">In this episode, I share my journey as a Gen Z changemaker — from founding Vital Hope to launching The Akshata Foundation, advocating for menstrual health education, cervical cancer awareness, and tackling the stigma that surrounds women's hygiene in India.</p>
+                        <a href="https://open.spotify.com/episode/2AO7cMCLhBaI6HWhcfJdsH?si=6e79811f749f4217" target="_blank" class="featured-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#1DB954">
+                                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.48.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                            </svg>
+                            <span>Listen on Spotify</span>
+                        </a>
                     </div>
                     
-                    <h3>Resume</h3>
-                    <div style="margin-bottom: 20px;">
-                        <div style="background-color: #eee; padding: 15px; border-radius: 10px;">
-                            <a href="https://docs.google.com/document/d/1ibGB-yvP4uTbSfOtNfpBuFGV2d5BeDM1T3yf8l0cO4Q/edit?tab=t.0" target="_blank" style="display: flex; align-items: center; text-decoration: none; color: var(--secondary);">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#4285F4">
-                                    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
-                                </svg>
-                                <span style="margin-left: 10px;">View Full Resume</span>
-                            </a>
-                        </div>
+                    <div class="featured-item">
+                        <h4>Corporate Lingo Unveiled Podcast</h4>
+                        <p style="margin-bottom: 15px;">As a host for this Teen Times Organization initiative, I help make complex business concepts accessible and engaging for our audience.</p>
+                        <a href="https://open.spotify.com/show/7pxi0fnzOHRLPbrkkhU1Fa?si=cb4f7042bd4c473b" target="_blank" class="featured-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#1DB954">
+                                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.48.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                            </svg>
+                            <span>Listen on Spotify</span>
+                        </a>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Image Gallery Section -->
-    <section id="gallery">
-        <div class="container">
-            <h2 class="section-title">Gallery</h2>
-            <p style="text-align: center; margin-bottom: 30px;">A glimpse into my community service, entrepreneurship, and leadership journey</p>
-            
-            <!-- Vertical Scroll for Gallery Images -->
-            <div class="vertical-scroll">
-                <div class="scroll-content">
-                    <div class="scroll-image">
-                        <p>United Nations Youth Summit Photo Will Be Added Later</p>
-                    </div>
-                    <div class="scroll-image">
-                        <p>Mental Health Awareness Campaign Photo Will Be Added Later</p>
-                    </div>
-                    <div class="scroll-image">
-                        <p>Puppy Yoga Fundraiser Photo Will Be Added Later</p>
-                    </div>
-                    <div class="scroll-image">
-                        <p>Akshata Foundation School Program Photo Will Be Added Later</p>
-                    </div>
-                    <div class="scroll-image">
-                        <p>Project Karnataka Village Visit Photo Will Be Added Later</p>
-                    </div>
-                    <div class="scroll-image">
-                        <p>Global Research Program at NUS Singapore Photo Will Be Added Later</p>
-                    </div>
-                    <div class="scroll-image">
-                        <p>PennSEM Competition Award Photo Will Be Added Later</p>
-                    </div>
-                    <div class="scroll-image">
-                        <p>School Athletics Event Photo Will Be Added Later</p>
-                    </div>
-                    <div class="scroll-image">
-                        <p>Theatre Performance Photo Will Be Added Later</p>
+                    
+                    <div class="featured-item">
+                        <h4>New York Times Podcast Tournament Submission</h4>
+                        <p style="margin-bottom: 15px;">My podcast addressing the troubling issue of bridal selling in India, created with my friend Amey for the NYT Podcast Tournament.</p>
+                        <a href="https://on.soundcloud.com/VN9tXoUV7c7kTRTcA" target="_blank" class="featured-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#ff7700">
+                                <path d="M1.175 12.225c-.051 0-.094.046-.101.1l-.233 2.154.233 2.105c.007.058.05.098.101.098.05 0 .09-.04.099-.098l.255-2.105-.27-2.154c0-.057-.045-.1-.09-.1m-.899.828c-.06 0-.091.037-.104.094L0 14.479l.165 1.308c0 .055.045.094.09.094s.089-.045.104-.104l.21-1.319-.21-1.334c0-.058-.044-.093-.09-.093m1.83-1.229c-.061 0-.12.045-.12.104l-.21 2.563.225 2.458c0 .06.045.12.119.12.061 0 .105-.061.121-.12l.254-2.474-.254-2.548c-.016-.06-.061-.12-.121-.12m.945-.089c-.075 0-.135.06-.15.135l-.193 2.64.21 2.544c.016.075.074.136.15.136.074 0 .135-.061.15-.136l.24-2.544-.24-2.639c-.015-.076-.075-.136-.135-.136m1.155.36c-.005-.09-.075-.149-.159-.149-.09 0-.158.061-.164.149l-.217 2.43.2 2.563c.005.09.075.157.159.157.074 0 .148-.068.158-.157l.227-2.563-.204-2.43m.824-.44c-.09 0-.169.069-.18.165l-.203 2.697.194 2.493c.016.104.09.18.18.18.089 0 .168-.061.18-.165l.227-2.493-.227-2.702c-.012-.104-.09-.164-.165-.164m.989-.008c-.104 0-.194.069-.194.193l-.187 2.712.187 2.614c0 .105.09.189.194.189.103 0 .194-.089.194-.189l.209-2.614-.209-2.712c-.005-.124-.086-.193-.194-.193m1.139.123c-.119 0-.214.089-.214.208l-.176 2.563.176 2.688c.005.119.094.209.214.209.119 0 .214-.089.214-.209l.189-2.688-.189-2.563c-.005-.119-.099-.208-.214-.208m1.139-.029c-.124 0-.229.089-.229.224l-.153 2.596.153 2.663c0 .135.105.224.229.224s.229-.089.229-.224l.174-2.663-.174-2.596c0-.135-.105-.224-.229-.224m1.349-.118c-.135 0-.244.119-.244.254l-.134 2.709.134 2.654c.005.141.114.259.244.259.135 0 .244-.118.244-.259l.15-2.654-.15-2.709c0-.135-.109-.254-.244-.254m.764.063c-.135 0-.244.119-.244.285l-.119 2.635.119 2.654c.005.141.114.274.244.274.146 0 .259-.133.259-.274l.129-2.654-.129-2.635c0-.165-.118-.285-.259-.285m1.004.046c-.15 0-.274.154-.274.304l-.104 2.569.104 2.63c0 .165.135.304.274.315.146 0 .269-.135.284-.304l.11-2.642-.11-2.564c-.016-.15-.135-.304-.284-.304m1.079-.027c-.165 0-.284.164-.284.339l-.09 2.577.09 2.663c.006.18.12.339.284.339.165 0 .284-.159.284-.339l.105-2.662-.105-2.577c0-.18-.12-.339-.284-.339m1.154.062c-.18 0-.307.18-.307.36l-.074 2.516.074 2.639c0 .195.127.36.307.36.18 0 .305-.18.305-.36l.09-2.639-.09-2.516c0-.18-.125-.36-.305-.36m1.184-.057c-.188 0-.324.18-.324.391l-.061 2.543.06 2.621c0 .21.15.391.325.391.18 0 .33-.181.33-.391l.074-2.621-.074-2.543c0-.21-.165-.391-.33-.391m1.245 0c-.195 0-.345.195-.345.42l-.045 2.523.045 2.609c0 .224.15.42.345.42.195 0 .345-.195.345-.42l.06-2.609-.06-2.523c0-.224-.15-.42-.345-.42m1.273.115c-.21 0-.375.21-.375.435l-.031 2.392.03 2.584c0 .225.181.435.376.435.225 0 .375-.21.375-.435l.045-2.584-.045-2.392c0-.226-.165-.435-.375-.435m1.318.07c-.225 0-.391.225-.391.465l-.016 2.332.016 2.555c0 .24.166.465.391.465.21 0 .375-.225.375-.465l.031-2.555-.031-2.332c0-.24-.165-.465-.375-.465m1.988.209c-.033-.104-.137-.165-.256-.165-.136 0-.24.061-.271.164a.477.477 0 0 0-.014.135v4.47c0 .072.014.12.044.164.031.105.135.166.256.166.135 0 .24-.061.27-.166.016-.029.03-.076.03-.119v-4.535a.457.457 0 0 0-.059-.105m-16.933-.505c-.044 0-.08.035-.08.09v2.341l.08 2.307c.007.049.042.084.087.084.044 0 .087-.04.08-.084l.094-2.307-.094-2.342c0-.054-.037-.09-.087-.09"/>
+                            </svg>
+                            <span>Listen on SoundCloud</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -827,15 +889,95 @@
             <ul class="footer-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#nonprofits">Nonprofits</a></li>
-                <li><a href="#education">Education</a></li>
+                <li><a href="#entrepreneurship">Entrepreneurship</a></li>
                 <li><a href="#achievements">Achievements</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <p class="copyright">© 2025 Keerthana Raveendra. All rights reserved.</p>
         </div>
     </footer>
-
+    
     <script>
+        // Initialize all project sliders
+        function initSliders() {
+            const sliders = document.querySelectorAll('.project-slider');
+            
+            sliders.forEach(slider => {
+                const slides = slider.querySelectorAll('.project-slide');
+                const slideContainer = slider.querySelector('.slide-container');
+                const sliderNav = slider.querySelector('.slider-nav');
+                const prevBtn = slider.querySelector('.slider-btn-prev');
+                const nextBtn = slider.querySelector('.slider-btn-next');
+                let currentSlide = 0;
+                
+                // Set initial slide container width
+                slideContainer.style.width = `${slides.length * 100}%`;
+                
+                // Create navigation dots
+                slides.forEach((_, index) => {
+                    const dot = document.createElement('div');
+                    dot.classList.add('slider-dot');
+                    if (index === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => {
+                        goToSlide(index);
+                    });
+                    sliderNav.appendChild(dot);
+                });
+                
+                // Set up navigation buttons
+                prevBtn.addEventListener('click', () => {
+                    goToSlide(currentSlide - 1);
+                });
+                
+                nextBtn.addEventListener('click', () => {
+                    goToSlide(currentSlide + 1);
+                });
+                
+                // Function to navigate to a specific slide
+                function goToSlide(index) {
+                    // Handle loop around
+                    if (index < 0) {
+                        index = slides.length - 1;
+                    } else if (index >= slides.length) {
+                        index = 0;
+                    }
+                    
+                    // Update current slide
+                    currentSlide = index;
+                    
+                    // Move slide container
+                    slideContainer.style.transform = `translateX(-${(100 / slides.length) * currentSlide}%)`;
+                    
+                    // Update active dot
+                    const dots = sliderNav.querySelectorAll('.slider-dot');
+                    dots.forEach((dot, i) => {
+                        if (i === currentSlide) {
+                            dot.classList.add('active');
+                        } else {
+                            dot.classList.remove('active');
+                        }
+                    });
+                }
+                
+                // Auto-advance slides every 5 seconds
+                let autoSlide = setInterval(() => {
+                    goToSlide(currentSlide + 1);
+                }, 5000);
+                
+                // Pause auto-advance on mouse enter
+                slider.addEventListener('mouseenter', () => {
+                    clearInterval(autoSlide);
+                });
+                
+                // Resume auto-advance on mouse leave
+                slider.addEventListener('mouseleave', () => {
+                    autoSlide = setInterval(() => {
+                        goToSlide(currentSlide + 1);
+                    }, 5000);
+                });
+            });
+        }
+        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -882,6 +1024,11 @@
                     link.classList.add('active');
                 }
             });
+        });
+        
+        // Initialize sliders when the DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initSliders();
         });
     </script>
 </body>
