@@ -937,13 +937,13 @@
     min-width: 300px;
     max-width: 450px;
     position: relative;
-    margin-bottom: 20px; /* Add some margin at the bottom */
+    margin-bottom: 20px;
 }
 
 .profile-frame {
     border-radius: 20px;
     overflow: hidden;
-    height: 550px; /* Increased from 500px */
+    height: 550px; /* Keeping the increased height */
     background-color: #f8f8f8;
     display: flex;
     align-items: center;
@@ -952,7 +952,6 @@
     box-shadow: 0 15px 30px rgba(0,0,0,0.1);
     transition: all 0.5s ease;
     position: relative;
-    z-index: 2;
 }
 
 .profile-frame img {
@@ -961,16 +960,7 @@
     object-fit: cover;
 }
 
-.image-decoration {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 15px;
-    left: 15px;
-    border: 3px solid var(--primary);
-    border-radius: 20px;
-    z-index: 1;
-}
+
     
     .key-points {
         flex-direction: column;
@@ -1026,7 +1016,6 @@
             <div class="about-image">
     <div class="profile-frame">
         <img src="profile-keerthana.jpg" alt="Keerthana Raveendra">
-        <div class="image-decoration"></div>
     </div>
             </div>
             <div class="about-text">
