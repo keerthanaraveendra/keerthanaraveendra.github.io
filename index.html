@@ -316,7 +316,8 @@
             transition: transform 0.5s ease;
         }
         
-        .project-slide {
+        /* Update the project-slide class to ensure images fit properly */
+.project-slide {
     min-width: 100%;
     height: 400px;
     flex-shrink: 0;
@@ -325,9 +326,17 @@
     align-items: center;
     justify-content: center;
     color: #999;
-    background-size: cover;
+    background-size: contain; /* Changed from 'cover' to 'contain' */
     background-position: center;
     background-repeat: no-repeat;
+}
+
+/* Optional: Add a subtle background to make light-colored images more visible */
+.project-slider {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    background-color: #f8f8f8; /* Light gray background */
 }
         
         .slider-nav {
