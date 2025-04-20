@@ -305,39 +305,45 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
         
+        /* Updated Project Slider Styles */
         .project-slider {
             position: relative;
             height: 400px;
             overflow: hidden;
+            background-color: #f0f0f0;
         }
         
         .slide-container {
             display: flex;
             transition: transform 0.5s ease;
+            height: 100%;
         }
         
-        /* Update the project-slide class to ensure images fit properly */
-.project-slide {
-    min-width: 100%;
-    height: 400px;
-    flex-shrink: 0;
-    background-color: #f0f0f0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #999;
-    background-size: contain; /* Changed from 'cover' to 'contain' */
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-/* Optional: Add a subtle background to make light-colored images more visible */
-.project-slider {
-    position: relative;
-    height: 400px;
-    overflow: hidden;
-    background-color: #f8f8f8; /* Light gray background */
-}
+        /* Updated Project Slide Styles */
+        .project-slide {
+            min-width: 100%;
+            height: 400px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        /* Image styling to fit while keeping aspect ratio */
+        .project-slide img {
+            max-width: 100%;
+            max-height: 100%; 
+            object-fit: contain;
+            display: block;
+        }
+        
+        /* If using background images instead of <img> tags */
+        .project-slide.bg-image {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
         
         .slider-nav {
             position: absolute;
@@ -820,6 +826,12 @@
     z-index: 2;
 }
 
+.profile-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .image-decoration {
     position: absolute;
     width: 100%;
@@ -964,7 +976,7 @@
         <div class="about-content">
             <div class="about-image">
     <div class="profile-frame">
-        <img src="profile-keerthana.jpg" alt="Keerthana Raveendra" style="width: 100%; height: 100%; object-fit: cover;">
+        <img src="profile-keerthana.jpg" alt="Keerthana Raveendra">
         <div class="image-decoration"></div>
     </div>
             </div>
@@ -1006,12 +1018,24 @@
                             </svg>
                         </button>
                         <div class="slide-container">
-                            <div class="project-slide" style="background-image: url('images_minds_aligned/minds_aligned_1.png')"></div>
-                            <div class="project-slide" style="background-image: url('images_minds_aligned/minds_aligned_2.png')"></div>
-                            <div class="project-slide" style="background-image: url('images_minds_aligned/minds_aligned_3.png')"></div>
-                            <div class="project-slide" style="background-image: url('images_minds_aligned/minds_aligned_4.png')"></div>
-                            <div class="project-slide" style="background-image: url('images_minds_aligned/minds_aligned_5.png')"></div>
-                            <div class="project-slide" style="background-image: url('images_minds_aligned/minds_aligned_6.png')"></div>
+                            <div class="project-slide">
+                                <img src="images_minds_aligned/minds_aligned_1.png" alt="Minds Aligned">
+                            </div>
+                            <div class="project-slide">
+                                <img src="images_minds_aligned/minds_aligned_2.png" alt="Minds Aligned">
+                            </div>
+                            <div class="project-slide">
+                                <img src="images_minds_aligned/minds_aligned_3.png" alt="Minds Aligned">
+                            </div>
+                            <div class="project-slide">
+                                <img src="images_minds_aligned/minds_aligned_4.png" alt="Minds Aligned">
+                            </div>
+                            <div class="project-slide">
+                                <img src="images_minds_aligned/minds_aligned_5.png" alt="Minds Aligned">
+                            </div>
+                            <div class="project-slide">
+                                <img src="images_minds_aligned/minds_aligned_6.png" alt="Minds Aligned">
+                            </div>
                         </div>
                         <button class="slider-btn slider-btn-next">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1032,25 +1056,35 @@
                 <!-- Akshata Foundation -->
                 <div class="project-card">
                     <div class="project-slider" id="akshata-slider">
-    <button class="slider-btn slider-btn-prev">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M15 18l-6-6 6-6"/>
-        </svg>
-    </button>
-    <div class="slide-container">
-        <div class="project-slide" style="background-image: url('images_akshata/akshata_1.png')"></div>
-        <div class="project-slide" style="background-image: url('images_akshata/akshata_2.png')"></div>
-        <div class="project-slide" style="background-image: url('images_akshata/akshata_3.png')"></div>
-        <div class="project-slide" style="background-image: url('images_akshata/akshata_4.png')"></div>
-        <div class="project-slide" style="background-image: url('images_akshata/akshata_5.png')"></div>
-    </div>
-    <button class="slider-btn slider-btn-next">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 18l6-6-6-6"/>
-        </svg>
-    </button>
-    <div class="slider-nav"></div>
-</div>
+                        <button class="slider-btn slider-btn-prev">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M15 18l-6-6 6-6"/>
+                            </svg>
+                        </button>
+                        <div class="slide-container">
+                            <div class="project-slide">
+                                <img src="images_akshata/akshata_1.png" alt="Akshata Foundation">
+                            </div>
+                            <div class="project-slide">
+                                <img src="images_akshata/akshata_2.png" alt="Akshata Foundation">
+                            </div>
+                            <div class="project-slide">
+                                <img src="images_akshata/akshata_3.png" alt="Akshata Foundation">
+                            </div>
+                            <div class="project-slide">
+                                <img src="images_akshata/akshata_4.png" alt="Akshata Foundation">
+                            </div>
+                            <div class="project-slide">
+                                <img src="images_akshata/akshata_5.png" alt="Akshata Foundation">
+                            </div>
+                        </div>
+                        <button class="slider-btn slider-btn-next">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 18l6-6-6-6"/>
+                            </svg>
+                        </button>
+                        <div class="slider-nav"></div>
+                    </div>
                     <div class="project-info">
                         <h3 class="project-title">Akshata Foundation</h3>
                         <p class="project-description">As Co-head of Akshata Foundation, a student-led non-profit organization founded in 2023, I've helped drive our mission to help underprivileged women and children around India by introducing safe sanitary practices and equipment. Our motto, "Nurturing Lifelong Wellness," reflects our belief that everyone has the right to access accurate information about menstruation, cervical cancer, and other common conditions affecting women.</p>
@@ -1069,11 +1103,21 @@
                             </svg>
                         </button>
                         <div class="slide-container">
-                            <div class="project-slide" style="background-image: url('images_vital_hope/vital_hope_1.png')"></div>
-                            <div class="project-slide" style="background-image: url('images_vital_hope/vital_hope_2.png')"></div>
-                            <div class="project-slide" style="background-image: url('images_vital_hope/vital_hope_3.png')"></div>
-                            <div class="project-slide" style="background-image: url('images_vital_hope/vital_hope_4.png')"></div>
-                            <div class="project-slide" style="background-image: url('images_vital_hope/vital_hope_5.png')"></div>
+                            <div class="project-slide">
+                                <img src="images_vital_hope/vital_hope_1.png" alt="Vital Hope">
+                            </div>
+                            <div class="project-slide">
+                                <img src="images_vital_hope/vital_hope_2.png" alt="Vital Hope">
+                            </div>
+                            <div class="project-slide">
+                                <img src="images_vital_hope/vital_hope_3.png" alt="Vital Hope">
+                            </div>
+                            <div class="project-slide">
+                                <img src="images_vital_hope/vital_hope_4.png" alt="Vital Hope">
+                            </div>
+                            <div class="project-slide">
+                                <img src="images_vital_hope/vital_hope_5.png" alt="Vital Hope">
+                            </div>
                         </div>
                         <button class="slider-btn slider-btn-next">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1108,9 +1152,15 @@
                             </svg>
                         </button>
                         <div class="slide-container">
-                            <div class="project-slide" style="background-image: url('images_nus/nus_grip_1.png')"></div>
-                            <div class="project-slide" style="background-image: url('images_nus/nus_grip_2.png')"></div>
-                            <div class="project-slide" style="background-image: url('images_nus/nus_grip_3.png')"></div>
+                            <div class="project-slide">
+                                <img src="images_nus/nus_grip_1.png" alt="NUS GRIP">
+                            </div>
+                            <div class="project-slide">
+                                <img src="images_nus/nus_grip_2.png" alt="NUS GRIP">
+                            </div>
+                            <div class="project-slide">
+                                <img src="images_nus/nus_grip_3.png" alt="NUS GRIP">
+                            </div>
                         </div>
                         <button class="slider-btn slider-btn-next">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1136,7 +1186,9 @@
                             </svg>
                         </button>
                         <div class="slide-container">
-                            <div class="project-slide" style="background-image: url('images_pennsem/pennsem_1.png')"></div>
+                            <div class="project-slide">
+                                <img src="images_pennsem/pennsem_1.png" alt="PennSEM">
+                            </div>
                         </div>
                         <button class="slider-btn slider-btn-next">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1162,7 +1214,9 @@
                             </svg>
                         </button>
                         <div class="slide-container">
-                            <div class="project-slide" style="background-image: url('images_junior_mba/junior_mba_1.png')"></div>
+                            <div class="project-slide">
+                                <img src="images_junior_mba/junior_mba_1.png" alt="Junior MBA">
+                            </div>
                         </div>
                         <button class="slider-btn slider-btn-next">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1214,8 +1268,12 @@
                             </svg>
                         </button>
                         <div class="slide-container">
-                            <div class="project-slide" style="background-image: url('images_evren/evren_1.png')"></div>
-                            <div class="project-slide" style="background-image: url('images_evren/evren_2.png')"></div>
+                            <div class="project-slide">
+                                <img src="images_evren/evren_1.png" alt="Evren">
+                            </div>
+                            <div class="project-slide">
+                                <img src="images_evren/evren_2.png" alt="Evren">
+                            </div>
                         </div>
                         <button class="slider-btn slider-btn-next">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
