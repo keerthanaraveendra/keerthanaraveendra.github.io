@@ -933,13 +933,44 @@
     }
     
     .about-image {
-        width: 100%;
-        max-width: 350px;
-    }
-    
-    .profile-frame {
-        height: 350px;
-    }
+    flex: 1;
+    min-width: 300px;
+    max-width: 450px;
+    position: relative;
+    margin-bottom: 20px; /* Add some margin at the bottom */
+}
+
+.profile-frame {
+    border-radius: 20px;
+    overflow: hidden;
+    height: 550px; /* Increased from 500px */
+    background-color: #f8f8f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    transition: all 0.5s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.profile-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-decoration {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 15px;
+    left: 15px;
+    border: 3px solid var(--primary);
+    border-radius: 20px;
+    z-index: 1;
+}
     
     .key-points {
         flex-direction: column;
